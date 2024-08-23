@@ -2,7 +2,6 @@ import * as React from 'react';
 import Card from '@mui/joy/Card';
 import CardActions from '@mui/joy/CardActions';
 import CardContent from '@mui/joy/CardContent';
-import Checkbox from '@mui/joy/Checkbox';
 import Divider from '@mui/joy/Divider';
 import FormControl from '@mui/joy/FormControl';
 import Typography from '@mui/joy/Typography';
@@ -44,7 +43,6 @@ export default function RegisterForm() {
             <FormControl>
                <FormInput type='password' label='Confirm Password' placeholder='confirm password...' ok={true} />
             </FormControl>
-            <Checkbox variant='soft' color='primary' label="Save session" sx={{ gridColumn: '1/-1', my: 1 }} />
             <CardActions sx={{ gridColumn: '1/-1' }}>
                <Button sx={{ fontSize: 17, py: 1.2 }} variant="solid" color="primary">
                   Register
