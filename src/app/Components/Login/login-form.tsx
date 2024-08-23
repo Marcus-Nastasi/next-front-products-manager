@@ -9,17 +9,22 @@ import Divider from '@mui/joy/Divider';
 import FormControl from '@mui/joy/FormControl';
 import Typography from '@mui/joy/Typography';
 import Button from '@mui/joy/Button';
-import FormInput from '../Generics/FormInput';
-import SuccessBox from '../Generics/SuccessBox';
+import FormInput from '../Generics/form-input';
+import SuccessBox from '../Generics/success-box';
+import ErrorBox from '../Generics/error-box';
 
 export default function LoginForm() {
    const [ loading, setLoading ] = React.useState<boolean>();
-  const [openSuccess, setOpenSuccess] = React.useState<boolean>(false);
+   const [openSuccess, setOpenSuccess] = React.useState<boolean>(false);
+   const [openError, setOpenError] = React.useState<boolean>(false);
+   const [ errorMsg, setErrorMsg ] = React.useState<string>('Generic error');
 
    const handleSubmit = () => {
       setLoading(true);
       setTimeout(() => {
-         setOpenSuccess(true);
+         // setOpenSuccess(true);
+         setOpenError(true);
+         setErrorMsg('Error while fetching to server. Code 401.');
          setLoading(false);
       }, 2000);
    };
@@ -39,6 +44,11 @@ export default function LoginForm() {
             msg={'Você logou com sucesso! Redirecionando...'}
             open={openSuccess}
             setOpen={setOpenSuccess}
+         />
+         <ErrorBox 
+            msg={errorMsg} 
+            open={openError} 
+            setOpen={setOpenError} 
          />
          <Typography fontSize={30} level="title-lg">
             Login
@@ -60,7 +70,12 @@ export default function LoginForm() {
             <FormControl>
                <FormInput type='password' label='Password' placeholder='password...' ok={true} />
             </FormControl>
-            <Checkbox variant='soft' color='primary' label="Save session" sx={{ gridColumn: '1/-1', my: 1 }} />
+            <Checkbox 
+               variant='soft' 
+               color='primary' 
+               label="Save session" 
+               sx={{ gridColumn: '1/-1', my: 1 }} 
+            />
             <CardActions sx={{ gridColumn: '1/-1' }}>
                {
                   loading ?

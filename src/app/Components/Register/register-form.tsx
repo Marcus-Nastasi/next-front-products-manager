@@ -6,7 +6,7 @@ import Divider from '@mui/joy/Divider';
 import FormControl from '@mui/joy/FormControl';
 import Typography from '@mui/joy/Typography';
 import Button from '@mui/joy/Button';
-import FormInput from '../Generics/FormInput';
+import FormInput from '../Generics/form-input';
 
 export default function RegisterForm() {
    return (
