@@ -1,3 +1,5 @@
+'use client'
+
 import * as React from 'react';
 import { styled } from '@mui/joy/styles';
 import Input from '@mui/joy/Input';
@@ -62,17 +64,31 @@ const InnerInput = React.forwardRef<
   return (
     <React.Fragment>
       <StyledInput {...props} ref={ref} id={id} />
-      <StyledLabel htmlFor={id}>Label</StyledLabel>
+      <StyledLabel htmlFor={id}>{}</StyledLabel>
     </React.Fragment>
   );
 });
 
-export default function FloatingLabelInput() {
+export default function FormInput({ type, label, placeholder, ok }: { type: string, label: string, placeholder: string, ok: boolean }) {
+
+   const InnerInput = React.forwardRef<
+   HTMLInputElement,
+   JSX.IntrinsicElements['input']
+   >(function InnerInput(props, ref) {
+   const id = React.useId();
+   return (
+      <React.Fragment>
+         <StyledInput {...props} ref={ref} id={id} />
+         <StyledLabel htmlFor={id}>{label}</StyledLabel>
+      </React.Fragment>
+   );
+   });
+
   return (
     <Input
       endDecorator={<CheckCircleOutlined />}
       slots={{ input: InnerInput }}
-      slotProps={{ input: { placeholder: 'A placeholder', type: 'password' } }}
+      slotProps={{ input: { placeholder: placeholder, type: type } }}
       sx={{
         '--Input-minHeight': '56px',
         '--Input-radius': '6px',
