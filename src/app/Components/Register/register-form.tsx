@@ -1,3 +1,5 @@
+'use client'
+
 import * as React from 'react';
 import Card from '@mui/joy/Card';
 import CardActions from '@mui/joy/CardActions';
@@ -7,8 +9,25 @@ import FormControl from '@mui/joy/FormControl';
 import Typography from '@mui/joy/Typography';
 import Button from '@mui/joy/Button';
 import FormInput from '../Generics/form-input';
+import SuccessBox from '../Generics/success-box';
+import ErrorBox from '../Generics/error-box';
 
 export default function RegisterForm() {
+   const [ loading, setLoading ] = React.useState<boolean>();
+   const [openSuccess, setOpenSuccess] = React.useState<boolean>(false);
+   const [openError, setOpenError] = React.useState<boolean>(false);
+   const [ errorMsg, setErrorMsg ] = React.useState<string>('Generic error');
+
+   const handleSubmit = () => {
+      setLoading(true);
+      setTimeout(() => {
+         setOpenSuccess(true);
+         // setOpenError(true);
+         // setErrorMsg('Error while fetching to server. Code 401.');
+         setLoading(false);
+      }, 2000);
+   };
+
    return (
       <Card
          variant="outlined"
@@ -17,9 +36,19 @@ export default function RegisterForm() {
             mx: 'auto',
             overflow: 'auto',
             resize: 'horizontal',
-            boxShadow: '0 0 10px 0.1px gray'
+            boxShadow: '0 0 5px 0.01px gray'
          }}
       >
+         <SuccessBox
+            msg={'You have successfully registered. Redirecting......'}
+            open={openSuccess}
+            setOpen={setOpenSuccess}
+         />
+         <ErrorBox
+            msg={errorMsg} 
+            open={openError} 
+            setOpen={setOpenError} 
+         />
          <Typography fontSize={30} level="title-lg">
             Register
          </Typography>
@@ -44,9 +73,25 @@ export default function RegisterForm() {
                <FormInput type='password' label='Confirm Password' placeholder='confirm password...' ok={true} />
             </FormControl>
             <CardActions sx={{ gridColumn: '1/-1' }}>
-               <Button sx={{ fontSize: 17, py: 1.2 }} variant="solid" color="primary">
-                  Register
-               </Button>
+               {
+                  loading ?
+                  <Button
+                     loading
+                     sx={{ fontSize: 17, py: 1.2 }} 
+                     size='lg'
+                     variant="solid"
+                     color="primary"
+                  >
+                  </Button> :
+                  <Button
+                     onClick={handleSubmit}
+                     sx={{ fontSize: 17, py: 1.2 }} 
+                     variant="solid" 
+                     color="primary"
+                  >
+                     Register
+                  </Button>
+               }
             </CardActions>
          </CardContent>
       </Card>

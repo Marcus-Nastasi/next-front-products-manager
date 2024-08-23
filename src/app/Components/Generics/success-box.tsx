@@ -12,6 +12,7 @@ export default function SuccessBox({ msg, open, setOpen }:
   return (
     <React.Fragment>
       <Snackbar
+        size='lg'
         variant="soft"
         color="success"
         open={open}

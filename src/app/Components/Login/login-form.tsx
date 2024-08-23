@@ -22,9 +22,9 @@ export default function LoginForm() {
    const handleSubmit = () => {
       setLoading(true);
       setTimeout(() => {
-         // setOpenSuccess(true);
-         setOpenError(true);
-         setErrorMsg('Error while fetching to server. Code 401.');
+         setOpenSuccess(true);
+         // setOpenError(true);
+         // setErrorMsg('Error while fetching to server. Code 401.');
          setLoading(false);
       }, 2000);
    };
@@ -37,11 +37,11 @@ export default function LoginForm() {
             mx: 'auto',
             overflow: 'auto',
             resize: 'horizontal',
-            boxShadow: '0 0 10px 0.1px gray'
+            boxShadow: '0 0 5px 0.01px gray'
          }}
       >
          <SuccessBox 
-            msg={'Você logou com sucesso! Redirecionando...'}
+            msg={'You have successfully logged in! Redirecting......'}
             open={openSuccess}
             setOpen={setOpenSuccess}
          />
@@ -78,7 +78,7 @@ export default function LoginForm() {
             />
             <CardActions sx={{ gridColumn: '1/-1' }}>
                {
-                  loading ?
+                  loading &&
                   <Button
                      loading
                      sx={{ fontSize: 17, py: 1.2 }} 
@@ -86,7 +86,7 @@ export default function LoginForm() {
                      variant="solid"
                      color="primary"
                   >
-                  </Button> :
+                  </Button> ||
                   <Button
                      onClick={handleSubmit}
                      sx={{ fontSize: 17, py: 1.2 }} 
