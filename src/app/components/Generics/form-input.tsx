@@ -56,13 +56,19 @@ const StyledLabel = styled('label')(({ theme }) => ({
   transition: 'all 150ms cubic-bezier(0.4, 0, 0.2, 1)',
 }));
 
-export default function FormInput({ type, label, placeholder, ok }: 
-   { 
-      type: string, 
-      label: string, 
-      placeholder: string, 
-      ok: boolean 
-   }
+interface FormInputProps {
+   type: string;
+   label: string;
+   placeholder: string;
+   ok?: boolean;
+   error?: boolean;
+   value?: string;
+   setValue?: Function
+}
+
+export default function FormInput({ 
+   type, label, placeholder, ok = false, error = false, value, setValue 
+   }: FormInputProps
 ) {
    const InnerInput = React.forwardRef<
       HTMLInputElement,
@@ -79,6 +85,8 @@ export default function FormInput({ type, label, placeholder, ok }:
 
    return (
       <Input
+         value={value}
+         onChange={setValue ? (e) => setValue(e.target.value) : () => {}}
          endDecorator={<CheckCircleOutlined />}
          slots={{ 
             input: InnerInput 
