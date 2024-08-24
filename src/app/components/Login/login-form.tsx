@@ -23,7 +23,7 @@ export default function LoginForm() {
    const [openError, setOpenError] = React.useState<boolean>(false);
    const [ errorMsg, setErrorMsg ] = React.useState<string>('Generic error');
 
-   const handleSubmit = async (): Promise<LoginResponseDTO | null> => {
+   const handleSubmit = async (e: any): Promise<LoginResponseDTO | null> => {
       setLoading(true);
       try {
          if (!username || !password) throw new Error('Username e senha são obrigatórios');
@@ -75,9 +75,10 @@ export default function LoginForm() {
                gap: 1.5,
             }}
          >
+            {/* Debugar form aqui, valores não digitando direito */}
             <FormControl>
                <FormInput
-                  value={username}
+                  value={username ? username : ''}
                   setValue={setUsername}
                   type='text' 
                   label='Username' 
@@ -88,7 +89,7 @@ export default function LoginForm() {
             </FormControl>
             <FormControl>
                <FormInput 
-                  value={password} 
+                  value={password ? password : ''} 
                   setValue={setPassword}  
                   type='password' 
                   label='Password' 

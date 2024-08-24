@@ -4,6 +4,7 @@ import * as React from 'react';
 import { styled } from '@mui/joy/styles';
 import Input from '@mui/joy/Input';
 import CheckCircleOutlined from '@mui/icons-material/CheckCircleOutlined';
+import { useEffect, useState } from 'react';
 
 const StyledInput = styled('input')({
   border: 'none', // remove the native input border
@@ -62,8 +63,8 @@ interface FormInputProps {
    placeholder: string;
    ok?: boolean;
    error?: boolean;
-   value?: string;
-   setValue?: Function
+   value: string;
+   setValue: Function
 }
 
 export default function FormInput({ 
@@ -83,10 +84,18 @@ export default function FormInput({
    );
    });
 
+   const inputRef = React.useRef<HTMLInputElement>(null);
+
+   React.useEffect(() => {
+      if (inputRef.current) {
+         inputRef.current.focus();
+      }
+  }, [value]);
+
    return (
       <Input
          value={value}
-         onChange={setValue ? (e) => setValue(e.target.value) : () => {}}
+         onChange={(e) => setValue(e.target.value)}
          endDecorator={<CheckCircleOutlined />}
          slots={{ 
             input: InnerInput 
@@ -94,7 +103,8 @@ export default function FormInput({
          slotProps={{ 
             input: { 
                placeholder: placeholder, 
-               type: type 
+               type: type,
+               ref: inputRef // Passe o ref aqui
             } 
          }}
          sx={{
