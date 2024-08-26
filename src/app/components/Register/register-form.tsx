@@ -61,16 +61,16 @@ export default function RegisterForm() {
             }}
          >
             <FormControl sx={{ gridColumn: '1/-1' }}>
-               <FormInput type='text' label='Username' placeholder='xyz@123...' ok={true} />
+               <FormInput type='text' label='Username' placeholder='xyz@123...' ok={true} error={false} />
             </FormControl>
             <FormControl sx={{ gridColumn: '1/-1' }}>
-               <FormInput type='email' label='E-mail' placeholder='e-mail...' ok={true} />
+               <FormInput type='email' label='E-mail' placeholder='e-mail...' ok={true} error={false} />
             </FormControl>
             <FormControl>
-               <FormInput type='password' label='Password' placeholder='password...' ok={true} />
+               <FormInput type='password' label='Password' placeholder='password...' ok={true} error={false} />
             </FormControl>
             <FormControl>
-               <FormInput type='password' label='Confirm Password' placeholder='confirm password...' ok={true} />
+               <FormInput type='password' label='Confirm Password' placeholder='confirm password...' ok={true} error={false} />
             </FormControl>
             <CardActions sx={{ gridColumn: '1/-1' }}>
                {
@@ -94,6 +94,12 @@ export default function RegisterForm() {
                }
             </CardActions>
          </CardContent>
+         <div className='flex justify-center py-3'>
+            <p>
+               Don't have an account? 
+               <a className=' text-blue-600 hover:text-blue-800' href="/register"> Sign up</a>
+            </p>
+         </div>
       </Card>
    );
 }

@@ -4,7 +4,6 @@ import * as React from 'react';
 import { styled } from '@mui/joy/styles';
 import Input from '@mui/joy/Input';
 import CheckCircleOutlined from '@mui/icons-material/CheckCircleOutlined';
-import { useEffect, useState } from 'react';
 
 const StyledInput = styled('input')({
   border: 'none', // remove the native input border

@@ -1,5 +1,4 @@
-import LoginDTO from "@/app/interfaces/Login/login-dto";
-import LoginResponseDTO from "@/app/interfaces/Login/login-response-dto";
+import { LoginDTO, LoginResponseDTO } from "@/app/interfaces/Login/login";
 
 class LoginService {
    static async login(data: LoginDTO): Promise<LoginResponseDTO | null> {

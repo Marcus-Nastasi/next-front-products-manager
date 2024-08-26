@@ -12,8 +12,9 @@ import Button from '@mui/joy/Button';
 import FormInput from '../Generics/form-input';
 import SuccessBox from '../Generics/success-box';
 import ErrorBox from '../Generics/error-box';
-import LoginResponseDTO from '@/app/interfaces/Login/login-response-dto';
 import {LoginService} from '@/app/services/Login/login.service';
+import Cookie from '@/app/util/Cookie';
+import { LoginResponseDTO } from '@/app/interfaces/Login/login';
 
 export default function LoginForm() {
    const [ username, setUsername ] = React.useState<string>();
@@ -34,6 +35,7 @@ export default function LoginForm() {
          if (!login) throw new Error('Erro ao realizar login');
          setLoading(false);
          setOpenSuccess(true);
+         Cookie.create('pm_access_token', login.data.token, 12);
          return login;
       } catch (error: any) {
          setLoading(false);
@@ -47,7 +49,7 @@ export default function LoginForm() {
       <Card
          variant="outlined"
          sx={{
-            width: 600,
+            width: { xs: 'full', sm: '90%', md: '70%', lg: '50%', xl: '30%' },
             mx: 'auto',
             overflow: 'auto',
             resize: 'horizontal',
@@ -75,7 +77,6 @@ export default function LoginForm() {
                gap: 1.5,
             }}
          >
-            {/* Debugar form aqui, valores não digitando direito */}
             <FormControl>
                <FormInput
                   value={username ? username : ''}
@@ -121,11 +122,17 @@ export default function LoginForm() {
                      variant="solid" 
                      color="primary"
                   >
-                     Enter
+                     Log in
                   </Button>
                }
             </CardActions>
          </CardContent>
+         <div className='flex justify-center py-3'>
+            <p>
+               Don't have an account? 
+               <a className=' text-blue-600 hover:text-blue-800' href="/register"> Sign up</a>
+            </p>
+         </div>
       </Card>
    );
 }
