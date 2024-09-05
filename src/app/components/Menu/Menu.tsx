@@ -90,7 +90,7 @@ export default function Menu() {
                     },
                     {
                       name: 'Expenses',
-                      icon: <TrendingDownIcon color='error' />,
+                      icon: <TrendingDownIcon htmlColor='rgba(183, 97, 97)' />,
                     },
                     {
                       name: 'Products',
@@ -98,7 +98,7 @@ export default function Menu() {
                     },
                     {
                       name: 'Dashboard',
-                      icon: <AnalyticsTwoToneIcon color='secondary' />,
+                      icon: <AnalyticsTwoToneIcon htmlColor='rgba(183, 97, 183)' />,
                     },
                   ].map((item) => (
                     <Card
