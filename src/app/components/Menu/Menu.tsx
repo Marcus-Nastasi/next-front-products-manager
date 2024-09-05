@@ -14,12 +14,12 @@ import RadioGroup from '@mui/joy/RadioGroup';
 import Radio from '@mui/joy/Radio';
 import Sheet from '@mui/joy/Sheet';
 import Typography from '@mui/joy/Typography';
-import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
-import ApartmentRoundedIcon from '@mui/icons-material/ApartmentRounded';
-import MeetingRoomRoundedIcon from '@mui/icons-material/MeetingRoomRounded';
-import HotelRoundedIcon from '@mui/icons-material/HotelRounded';
 import WidgetsRoundedIcon from '@mui/icons-material/WidgetsRounded';
 import { IconButton } from '@mui/joy';
+import TrendingUpIcon from '@mui/icons-material/TrendingUp';
+import TrendingDownIcon from '@mui/icons-material/TrendingDown';
+import AnalyticsTwoToneIcon from '@mui/icons-material/AnalyticsTwoTone';
+import FilterNoneTwoToneIcon from '@mui/icons-material/FilterNoneTwoTone';
 
 export default function Menu() {
   const [open, setOpen] = React.useState(false);
@@ -85,20 +85,20 @@ export default function Menu() {
                 >
                   {[
                     {
-                      name: 'Vendas',
-                      icon: <HomeRoundedIcon />,
+                      name: 'Sales',
+                      icon: <TrendingUpIcon color='success' />,
                     },
                     {
-                      name: 'Despesas',
-                      icon: <ApartmentRoundedIcon />,
+                      name: 'Expenses',
+                      icon: <TrendingDownIcon color='error' />,
                     },
                     {
-                      name: 'Produtos',
-                      icon: <MeetingRoomRoundedIcon />,
+                      name: 'Products',
+                      icon: <FilterNoneTwoToneIcon color='primary' />,
                     },
                     {
                       name: 'Dashboard',
-                      icon: <HotelRoundedIcon />,
+                      icon: <AnalyticsTwoToneIcon color='secondary' />,
                     },
                   ].map((item) => (
                     <Card
