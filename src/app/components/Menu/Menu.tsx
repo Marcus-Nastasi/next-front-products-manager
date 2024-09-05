@@ -15,11 +15,12 @@ import Radio from '@mui/joy/Radio';
 import Sheet from '@mui/joy/Sheet';
 import Typography from '@mui/joy/Typography';
 import WidgetsRoundedIcon from '@mui/icons-material/WidgetsRounded';
-import { IconButton } from '@mui/joy';
+import { Button, IconButton } from '@mui/joy';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import TrendingDownIcon from '@mui/icons-material/TrendingDown';
 import AnalyticsTwoToneIcon from '@mui/icons-material/AnalyticsTwoTone';
 import FilterNoneTwoToneIcon from '@mui/icons-material/FilterNoneTwoTone';
+import SettingsRoundedIcon from '@mui/icons-material/SettingsRounded';
 
 export default function Menu() {
   const [open, setOpen] = React.useState(false);
@@ -65,7 +66,7 @@ export default function Menu() {
             overflow: 'auto',
           }}
         >
-          <DialogTitle>Menu</DialogTitle>
+          <DialogTitle sx={{ userSelect: 'none' }}>Menu</DialogTitle>
           <ModalClose />
           <Divider sx={{ mt: 'auto' }} />
           <DialogContent sx={{ gap: 2 }}>
@@ -142,6 +143,18 @@ export default function Menu() {
             </FormControl>
           </DialogContent>
           <Divider sx={{ mt: 'auto' }} />
+          <Button
+            color='neutral'
+            variant='plain'
+            sx={{
+               // alignSelf: 'end',
+               width: 'fit-content',
+               height: 'fit-content',
+               padding: 1
+            }}
+          >
+             <SettingsRoundedIcon sx={{ fontSize: 25 }} />
+          </Button>
         </Sheet>
       </Drawer>
     </React.Fragment>

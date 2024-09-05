@@ -1,7 +1,7 @@
 'use client'
 
 import React from "react";
-import Menu from "./components/Menu/Menu";
+import Menu from "../components/Menu/Menu";
 import { Box, Button, Card, Stack, Typography } from "@mui/joy";
 import Grid from "@mui/joy/Grid";
 import { useColorScheme, extendTheme, CssVarsProvider } from '@mui/joy/styles';
@@ -80,7 +80,7 @@ const theme = extendTheme({
    },
 });
 
-export default function Home() {
+export default function Sales() {
    return (
       <CssVarsProvider theme={theme} defaultMode={"light"} >
          <ToggleThemeButton />
@@ -110,7 +110,7 @@ export default function Home() {
                   textAlign={'center'}
                   sx={{ userSelect: 'none' }}
                >
-                  Product Manager Console
+                  Sales
                </Typography>
                <Stack spacing={1} marginTop={15}>
                   <Card variant="outlined" sx={{
@@ -133,7 +133,6 @@ export default function Home() {
                         }}>
                            <Card sx={{ padding: 0, transition: 'all ease-in-out 320ms' }}>
                               <Card
-                                 onClick={() => window.open('/sales', '_self')}
                                  variant="plain"
                                  sx={{
                                     width: 'full',
