@@ -65,12 +65,16 @@ export default function MenuFilter() {
                   xs: '100%',
                   sm: '90%',
                   md: '80%',
-                  lg: '60%'
+                  lg: '40%'
                },
                bgcolor: 'transparent',
                p: { md: 3, sm: 0 },
                boxShadow: 'none',
-               right: 6
+               right: 6,
+               height: {
+                  xs: '50%',
+                  md: '70%',
+               },
             },
             },
          }}
@@ -81,102 +85,72 @@ export default function MenuFilter() {
             p: 2,
             display: 'flex',
             flexDirection: 'column',
-            gap: 2,
-            height: {
-               xs: '100%',
-               md: 'fit-content'
-            },
+            gap: 3,
             overflow: 'auto',
+            height: {
+               lg: '90%'
+            },
           }}
         >
           <DialogTitle sx={{ userSelect: 'none' }}>Filters</DialogTitle>
           <ModalClose />
           <Divider sx={{ mt: 'auto' }} />
           <DialogContent sx={{ gap: 2 }}>
-            <FormControl>
-              <RadioGroup
-                value={type || ''}
-                onChange={(event) => {
-                  setType(event.target.value);
-                }}
-              >
-                <Box
+            <FormControl sx={{ height: '100%' }}>
+               <Box
                   sx={{
-                    display: 'grid',
-                    gridTemplateColumns: 'repeat(auto-fill, minmax(140px, 1fr))',
-                    gap: 1.5,
+                     display: 'flex',
+                     flexDirection: 'column',
+                     justifyContent: 'space-evenly',
+                     height: '100%',
                   }}
-                >
+               >
                   {[
-                    {
-                      name: 'Sales',
-                      icon: <TrendingUpIcon color='success' />,
-                    },
-                    {
-                      name: 'Expenses',
-                      icon: <TrendingDownIcon htmlColor='rgba(183, 97, 97)' />,
-                    },
-                    {
-                      name: 'Products',
-                      icon: <FilterNoneTwoToneIcon color='primary' />,
-                    },
-                    {
-                      name: 'Dashboard',
-                      icon: <AnalyticsTwoToneIcon htmlColor='rgba(183, 97, 183)' />,
-                    },
+                     {
+                        name: 'name',
+                        icon: <TrendingUpIcon color='success' />,
+                     },
+                     {
+                        name: 'description',
+                        icon: <TrendingDownIcon htmlColor='rgba(183, 97, 97)' />,
+                     },
+                     {
+                        name: 'price',
+                        icon: <FilterNoneTwoToneIcon color='primary' />,
+                     },
+                     {
+                        name: 'quantity',
+                        icon: <AnalyticsTwoToneIcon htmlColor='rgba(183, 97, 183)' />,
+                     },
                   ].map((item) => (
-                    <Card
-                      key={item.name}
-                      sx={{
-                        boxShadow: 'none',
-                        '&:hover': { bgcolor: 'background.level1' },
-                      }}
-                    >
-                      <CardContent>
-                        {item.icon}
-                        <Typography level="title-md">{item.name}</Typography>
-                      </CardContent>
-                      <Radio
-                        disableIcon
-                        overlay
-                        checked={type === item.name}
-                        variant="outlined"
-                        color="neutral"
-                        value={item.name}
-                        sx={{ mt: -2 }}
-                        slotProps={{
-                          action: {
-                            sx: {
-                              ...(type === item.name && {
-                                borderWidth: 2,
-                                borderColor:
-                                  'var(--joy-palette-primary-outlinedBorder)',
-                              }),
-                              '&:hover': {
-                                bgcolor: 'transparent',
-                              },
-                            },
-                          },
+                     <Card
+                        sx={{
+                           my: 0.2
                         }}
-                      />
-                    </Card>
-                  ))}
-                </Box>
-              </RadioGroup>
+                        key={item.name}
+                     >
+                        <CardContent>
+                           <Typography level="title-md">{item.name}</Typography>
+                        </CardContent>
+                        
+                     </Card>
+               ))}
+               </Box>
             </FormControl>
           </DialogContent>
           <Divider sx={{ mt: 'auto' }} />
           <Button
-            color='neutral'
-            variant='plain'
+            color='primary'
+            variant='outlined'
+            size='lg'
             sx={{
-               // alignSelf: 'end',
                width: 'fit-content',
                height: 'fit-content',
-               padding: 1
+               padding: 1,
+               px: 5
             }}
           >
-             <SettingsRoundedIcon sx={{ fontSize: 25 }} />
+            Filter
           </Button>
         </Sheet>
       </Drawer>
