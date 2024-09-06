@@ -14,46 +14,66 @@ import RadioGroup from '@mui/joy/RadioGroup';
 import Radio from '@mui/joy/Radio';
 import Sheet from '@mui/joy/Sheet';
 import Typography from '@mui/joy/Typography';
-import WidgetsRoundedIcon from '@mui/icons-material/WidgetsRounded';
 import { Button, IconButton } from '@mui/joy';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import TrendingDownIcon from '@mui/icons-material/TrendingDown';
 import AnalyticsTwoToneIcon from '@mui/icons-material/AnalyticsTwoTone';
 import FilterNoneTwoToneIcon from '@mui/icons-material/FilterNoneTwoTone';
 import SettingsRoundedIcon from '@mui/icons-material/SettingsRounded';
+import FilterListRoundedIcon from '@mui/icons-material/FilterListRounded';
 
-export default function Menu() {
+export default function MenuFilter() {
   const [open, setOpen] = React.useState(false);
   const [type, setType] = React.useState('Guesthouse');
 
   return (
-    <React.Fragment>
+    <Box
+      sx={{
+         display: 'flex',
+         justifyContent: 'end',
+         width: {
+            xs: '90vw',
+            sm: '70vw',
+            md: '70vw',
+            lg: '60vw',
+            xl: '50vw'
+         },
+         my: 4
+      }}
+    >
       <IconButton 
          onClick={() => setOpen(true)} 
-         sx={{ margin: 2 }} 
          variant={'plain'} 
          color={'primary'} 
          aria-label="Open menu" 
          component="a"
       >
-         <WidgetsRoundedIcon onClick={() => setOpen(true)} sx={{
+         <FilterListRoundedIcon onClick={() => setOpen(true)} sx={{
             fontSize: 35,
          }} />
       </IconButton>
       <Drawer
-        size="md"
-        variant="plain"
-        open={open}
-        onClose={() => setOpen(false)}
-        slotProps={{
-          content: {
+         anchor={'bottom'}
+         size="md"
+         variant="plain"
+         open={open}
+         onClose={() => setOpen(false)}
+         slotProps={{
+            content: {
             sx: {
-              bgcolor: 'transparent',
-              p: { md: 3, sm: 0 },
-              boxShadow: 'none',
+               width: {
+                  xs: '100%',
+                  sm: '90%',
+                  md: '80%',
+                  lg: '60%'
+               },
+               bgcolor: 'transparent',
+               p: { md: 3, sm: 0 },
+               boxShadow: 'none',
+               right: 6
             },
-          },
-        }}
+            },
+         }}
       >
         <Sheet
           sx={{
@@ -69,7 +89,7 @@ export default function Menu() {
             overflow: 'auto',
           }}
         >
-          <DialogTitle sx={{ userSelect: 'none' }}>Menu</DialogTitle>
+          <DialogTitle sx={{ userSelect: 'none' }}>Filters</DialogTitle>
           <ModalClose />
           <Divider sx={{ mt: 'auto' }} />
           <DialogContent sx={{ gap: 2 }}>
@@ -160,6 +180,6 @@ export default function Menu() {
           </Button>
         </Sheet>
       </Drawer>
-    </React.Fragment>
+    </Box>
   );
 }

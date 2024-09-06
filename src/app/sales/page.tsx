@@ -121,7 +121,8 @@ export default function Sales() {
                         lg: '70vw'
                      },
                      height: 'fit-content',
-                     transition: 'all ease-in-out 320ms'
+                     transition: 'all ease-in-out 320ms',
+                     boxShadow: '0px 0px 5px 1px darkgray'
                   }}>
                      <Grid 
                         container 
@@ -133,14 +134,17 @@ export default function Sales() {
                         }}>
                            <Card sx={{ padding: 0, transition: 'all ease-in-out 320ms' }}>
                               <Card
+                                 // onClick={null}
                                  variant="plain"
                                  sx={{
+                                    boxShadow: '0px 0px 5px 1px darkgray',
                                     width: 'full',
                                     transition: 'all ease-in-out 320ms',
                                     ":hover": {
                                        cursor: 'pointer',
                                        backgroundColor: 'rgba(134, 238, 134, 0.1)',
-                                       backdropFilter: 'blur(30px)'
+                                       backdropFilter: 'blur(30px)',
+                                       boxShadow: '3px 3px 5px 1px darkgray',
                                     }
                                  }}
                               >
@@ -174,12 +178,14 @@ export default function Sales() {
                               <Card
                                  variant="plain"
                                  sx={{
+                                    boxShadow: '0px 0px 5px 1px darkgray',
                                     width: 'full',
                                     transition: 'all ease-in-out 320ms',
                                     ":hover": {
                                        cursor: 'pointer',
                                        backgroundColor: 'rgba(238, 134, 134, 0.1)',
-                                       backdropFilter: 'blur(30px)'
+                                       backdropFilter: 'blur(30px)',
+                                       boxShadow: '3px 3px 5px 1px darkgray',
                                     }
                                  }}
                               >
@@ -213,12 +219,14 @@ export default function Sales() {
                               <Card
                                  variant="plain"
                                  sx={{
+                                    boxShadow: '0px 0px 5px 1px darkgray',
                                     width: 'full',
                                     transition: 'all ease-in-out 320ms',
                                     ":hover": {
                                        cursor: 'pointer',
                                        backgroundColor: 'rgba(134, 198, 238, 0.1)',
-                                       backdropFilter: 'blur(30px)'
+                                       backdropFilter: 'blur(30px)',
+                                       boxShadow: '3px 3px 5px 1px darkgray',
                                     }
                                  }}
                               >
@@ -252,12 +260,14 @@ export default function Sales() {
                               <Card
                                  variant="plain"
                                  sx={{
+                                    boxShadow: '0px 0px 5px 1px darkgray',
                                     width: 'full',
                                     transition: 'all ease-in-out 320ms',
                                     ":hover": {
                                        cursor: 'pointer',
                                        backgroundColor: 'rgba(189, 134, 238, 0.1)',
-                                       backdropFilter: 'blur(30px)'
+                                       backdropFilter: 'blur(30px)',
+                                       boxShadow: '3px 3px 5px 1px darkgray',
                                     }
                                  }}
                               >
