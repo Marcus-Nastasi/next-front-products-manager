@@ -3,29 +3,18 @@
 import * as React from 'react';
 import Box from '@mui/joy/Box';
 import Drawer from '@mui/joy/Drawer';
-import Card from '@mui/joy/Card';
-import CardContent from '@mui/joy/CardContent';
 import DialogTitle from '@mui/joy/DialogTitle';
 import DialogContent from '@mui/joy/DialogContent';
 import ModalClose from '@mui/joy/ModalClose';
 import Divider from '@mui/joy/Divider';
 import FormControl from '@mui/joy/FormControl';
-import RadioGroup from '@mui/joy/RadioGroup';
-import Radio from '@mui/joy/Radio';
 import Sheet from '@mui/joy/Sheet';
-import Typography from '@mui/joy/Typography';
 import { Button, IconButton } from '@mui/joy';
-import TrendingUpIcon from '@mui/icons-material/TrendingUp';
-import TrendingDownIcon from '@mui/icons-material/TrendingDown';
-import AnalyticsTwoToneIcon from '@mui/icons-material/AnalyticsTwoTone';
-import FilterNoneTwoToneIcon from '@mui/icons-material/FilterNoneTwoTone';
-import SettingsRoundedIcon from '@mui/icons-material/SettingsRounded';
 import FilterListRoundedIcon from '@mui/icons-material/FilterListRounded';
+import FormInput from '../Generics/form-input';
 
 export default function MenuFilter() {
   const [open, setOpen] = React.useState(false);
-  const [type, setType] = React.useState('Guesthouse');
-
   return (
     <Box
       sx={{
@@ -38,7 +27,7 @@ export default function MenuFilter() {
             lg: '60vw',
             xl: '50vw'
          },
-         my: 4
+         my: 4,
       }}
     >
       <IconButton 
@@ -48,9 +37,7 @@ export default function MenuFilter() {
          aria-label="Open menu" 
          component="a"
       >
-         <FilterListRoundedIcon onClick={() => setOpen(true)} sx={{
-            fontSize: 35,
-         }} />
+         <FilterListRoundedIcon onClick={() => setOpen(true)} sx={{ fontSize: 35, }} />
       </IconButton>
       <Drawer
          anchor={'bottom'}
@@ -72,8 +59,8 @@ export default function MenuFilter() {
                boxShadow: 'none',
                right: 6,
                height: {
-                  xs: '50%',
-                  md: '70%',
+                  xs: '85%',
+                  md: '90%',
                },
             },
             },
@@ -88,7 +75,7 @@ export default function MenuFilter() {
             gap: 3,
             overflow: 'auto',
             height: {
-               lg: '90%'
+               xs: '90%',
             },
           }}
         >
@@ -107,34 +94,54 @@ export default function MenuFilter() {
                >
                   {[
                      {
-                        name: 'name',
-                        icon: <TrendingUpIcon color='success' />,
+                        type: 'text',
+                        label: 'Name',
+                        placeholder: 'Filter by name',
+                        ok: false, 
+                        error: false, 
+                        value: "",
+                        setValue: () => null, 
                      },
                      {
-                        name: 'description',
-                        icon: <TrendingDownIcon htmlColor='rgba(183, 97, 97)' />,
+                        type: 'text',
+                        label: 'Description',
+                        placeholder: 'Filter by description',
+                        ok: false, 
+                        error: false, 
+                        value: "",
+                        setValue: () => null, 
                      },
                      {
-                        name: 'price',
-                        icon: <FilterNoneTwoToneIcon color='primary' />,
+                        type: 'number',
+                        label: 'Price',
+                        placeholder: 'Filter by price',
+                        ok: false, 
+                        error: false, 
+                        value: "",
+                        setValue: () => null, 
                      },
                      {
-                        name: 'quantity',
-                        icon: <AnalyticsTwoToneIcon htmlColor='rgba(183, 97, 183)' />,
+                        type: 'text',
+                        label: 'quantity',
+                        placeholder: 'Filter by quantity',
+                        ok: false, 
+                        error: false, 
+                        value: "",
+                        setValue: () => null, 
                      },
                   ].map((item) => (
-                     <Card
-                        sx={{
-                           my: 0.2
-                        }}
-                        key={item.name}
-                     >
-                        <CardContent>
-                           <Typography level="title-md">{item.name}</Typography>
-                        </CardContent>
-                        
-                     </Card>
-               ))}
+                     <div className='my-2'>
+                        <FormInput 
+                           type={item.type}
+                           label={item.label}
+                           placeholder={item.placeholder} 
+                           ok={item.ok}
+                           error={item.error} 
+                           value={item.value}
+                           setValue={item.setValue}  
+                        />
+                     </div>
+                  ))}
                </Box>
             </FormControl>
           </DialogContent>
